@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="flyout">
-    <navbar dark position="top" class="default-color" name="My Bonsai" href="#/" scrolling>
+    <navbar v-if="UserToken" dark position="top" class="default-color" name="My Bonsai" href="#/" scrolling>
       <navbar-collapse>
         <navbar-nav right>
           <navbar-item href="https://www.youtube.com/results?search_query=cuidados+bonsai" waves-fixed>Videos</navbar-item>
@@ -36,6 +36,11 @@ export default {
     NavbarCollapse,
     Ftr,
     EdgHd,
+  },
+  data () {
+    return {
+      UserToken: localStorage.getItem("token"),
+    };
   },
   methods: {
     cerrarSesion(){
