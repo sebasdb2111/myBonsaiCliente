@@ -1,25 +1,57 @@
 <template>
-  <div id="login">
-    <h2>Login</h2>
-    <router-link  :to="{name: 'registro'}"><button type="button" class="btn btn-raised btn-primary">Registrarme</button></router-link>
-    <form v-on:submit.prevent="login">
-      <p>
-        <label>Email</label>
-        <input type="text" v-model="UserLogin.email">
-      </p>
-      <p>
-        <label>Password</label>
-        <input type="password" v-model="UserLogin.password">
-      </p>
-      <input type="submit" value="Login">
-    </form>
+  <div>
+    <EdgeHeader color="teal darken-1"/>
+    <div class="container free-bird">
+      <row>
+        <column md="10" class="mx-auto float-none white z-depth-1 py-2 px-2">
+          <card-body>
+            <h2 class="h2-responsive"><strong>Login</strong></h2>
+            <form v-on:submit.prevent="login">
+              <div class="md-form">
+                <i class="fa fa-envelope prefix grey-text"></i>
+                <input type="email" id="materialFormLoginEmailEx" class="form-control" v-model="UserLogin.email">
+                <label for="materialFormLoginEmailEx">Your email</label>
+              </div>
+              <div class="md-form">
+                <i class="fa fa-lock prefix grey-text"></i>
+                <input type="password" id="materialFormLoginPasswordEx" class="form-control" v-model="UserLogin.password">
+                <label for="materialFormLoginPasswordEx">Your password</label>
+              </div>
+              <div class="text-center mt-4">
+                <button class="btn btn-default" type="submit">Login</button>
+              </div>
+            </form>
+            <hr/>
+            <row>
+              <column md="12" class="mx-auto float-none">
+                <p class="pull-right">No eres miembro? <router-link  :to="{name: 'registro'}">Registrate</router-link></p>
+              </column>
+            </row>
+          </card-body>
+        </column>
+      </row>
+    </div>
   </div>
 </template>
 
 <script>
+  import { Container, Column, Row, Fa, Navbar, NavbarItem, NavbarNav, NavbarCollapse, Btn, EdgeHeader, CardBody } from 'mdbvue';
   import axios from 'axios';
   export default {
     name: "login",
+    components: {
+      Container,
+      Column,
+      Row,
+      Fa,
+      Navbar,
+      NavbarItem,
+      NavbarNav,
+      NavbarCollapse,
+      Btn,
+      EdgeHeader,
+      CardBody
+    },
     mounted(){
 
     },
@@ -53,5 +85,36 @@
 </script>
 
 <style scoped>
+  h1, h2 {
+    font-weight: normal;
+  }
 
+  .home-feature-box {
+    padding: 40px 0;
+  }
+
+  .home-feature-box i {
+    font-size: 6rem;
+  }
+
+  .home-feature-box span {
+    display: block;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 20px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+  }
+
+  a {
+    color: #42b983;
+  }
 </style>
