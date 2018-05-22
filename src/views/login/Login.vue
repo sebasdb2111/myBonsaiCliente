@@ -9,13 +9,11 @@
             <form v-on:submit.prevent="login">
               <div class="md-form">
                 <i class="fa fa-envelope prefix grey-text"></i>
-                <input type="email" id="materialFormLoginEmailEx" class="form-control" v-model="UserLogin.email">
-                <label for="materialFormLoginEmailEx">Your email</label>
+                <input type="email" id="materialFormLoginEmailEx" placeholder="Tu email" class="form-control" v-model="UserLogin.email">
               </div>
               <div class="md-form">
                 <i class="fa fa-lock prefix grey-text"></i>
-                <input type="password" id="materialFormLoginPasswordEx" class="form-control" v-model="UserLogin.password">
-                <label for="materialFormLoginPasswordEx">Your password</label>
+                <input type="password" id="materialFormLoginPasswordEx" placeholder="Tu contraseña" class="form-control" v-model="UserLogin.password">
               </div>
               <div class="text-center mt-4">
                 <button class="btn btn-default" type="submit">Login</button>
