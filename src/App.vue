@@ -4,14 +4,14 @@
       <navbar-collapse>
         <navbar-nav right>
           <navbar-item href="https://www.youtube.com/results?search_query=cuidados+bonsai" waves-fixed>Videos</navbar-item>
-          <navbar-item @click="cerrarSesion()" waves-fixed>Cerrar sesion</navbar-item>
+          <navbar-item  waves-fixed><span @click="cerrarSesion()">Cerrar sesion</span></navbar-item>
         </navbar-nav>
       </navbar-collapse>
     </navbar>
     <main :style="{marginTop: '60px'}">
       <router-view></router-view>
     </main>
-    <Ftr color="default-color">
+    <Ftr class="margin-top-15" color="default-color">
       <p class="footer-copyright mb-0 py-3 text-center">
         {{new Date().getFullYear()}} Sebastian Diez Buades
       </p>
@@ -44,7 +44,6 @@ export default {
   },
   methods: {
     cerrarSesion(){
-      console.log('cerrar sesion');
       let router = this.$router;
       router.push('/login');
       localStorage.clear();
