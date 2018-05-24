@@ -12,8 +12,8 @@
               </a>
             </div>
             <div class="card-body card-bonsai">
-              <h5 class="pink-text"><i class="fa fa-tree"></i> {{bonsai.tipo}}</h5>
-              <h4 class="card-title">{{bonsai.alias}}</h4>
+              <h5 class="text-default"><i class="r fa fa-tree"></i> {{bonsai.tipo}}</h5>
+              <h4 class="card-title"><strong>{{bonsai.alias}}</strong></h4>
               <div class="card card-body">
                 <h4 class="card-title"><strong>Proximo Cuidado</strong></h4>
                 <span class="card-text"><strong>Cuidado:</strong> Regar</span>
