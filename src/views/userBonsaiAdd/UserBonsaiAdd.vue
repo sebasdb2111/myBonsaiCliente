@@ -1,42 +1,92 @@
 <template>
-  <div id="useBonsai-add">
-    <h2>Crear nuevo bonsai</h2>
-    <form v-on:submit.prevent="guardarUserBonsai">
-      <p>
-        <label>Tipo</label>
-        <select v-model="UserBonsai.idBonsai">
-          <option></option>
-          <option value="2">Manzano</option>
-        </select>
-      </p>
-      <p>
-        <label>Alias</label>
-        <input type="text" v-model="UserBonsai.alias">
-      </p>
-      <p>
-        <label>Fecha de adquisicion</label>
-        <input type="text" v-model="UserBonsai.fechaAdquisicion">
-      </p>
-      <p>
-        <label>Descripción</label>
-        <textarea v-model="UserBonsai.descripcion"></textarea>
-      </p>
-      <p>
-        <label>Edad</label>
-        <select v-model="UserBonsai.edad">
-          <option></option>
-          <option  v-for="i in 100" :value="i">{{i}}</option>
-        </select>
-      </p>
-      <input type="submit" value="Guardar bonsai">
-    </form>
+  <div>
+    <EdgeHeader color="teal darken-1"/>
+    <div id="useBonsai-add" class="container free-bird">
+      <row>
+        <column md="10" class="mx-auto float-none white z-depth-1 py-2 px-2">
+          <card-body>
+            <h2 class="h2-responsive"><strong>Añadir Bonsai</strong></h2>
+            <form  v-on:submit.prevent="guardarUserBonsai">
+              <row>
+                <column md="6">
+                  <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(54).jpg" class="img-fluid z-depth-1" alt="1" width="450px" height="450px">
+                </column>
+                <column md="6">
+                  <row>
+                    <column md="4" class="md-form">
+                      <p class="pull-right">Tipo</p>
+                    </column>
+                    <column md="8" class="md-form">
+                      <select class="custom-select" v-model="UserBonsai.idBonsai">
+                        <option value="1">Ficus</option>
+                        <option value="2">Manzano</option>
+                        <option value="3">Olmo</option>
+                        <option value="4">Olivo</option>
+                      </select>
+                    </column>
+                  </row>
+                  <row>
+                    <column md="4" class="md-form">
+                      <p class="pull-right">Alias</p>
+                    </column>
+                    <column md="8" class="md-form">
+                      <input type="text" class="form-control md-input" id="formGroupExampleInputMD" v-model="UserBonsai.alias">
+                    </column>
+                  </row>
+                  <row>
+                    <column md="4" class="md-form">
+                      <p class="pull-right">Edad</p>
+                    </column>
+                    <column md="8" class="md-form">
+                      <select class="custom-select" v-model="UserBonsai.edad">
+                        <option disabled>---</option>
+                        <option  v-for="i in 100" :value="i">{{i}}</option>
+                      </select>
+                    </column>
+                  </row>
+                  <row>
+                    <column md="4" class="md-form">
+                      <p class="pull-right">Adquisicion</p>
+                    </column>
+                    <column md="8" class="md-form">
+                      <input type="date" id="materialFormRegisterDateEx" class="form-control md-input" v-model="UserBonsai.fechaAdquisicion">
+                    </column>
+                  </row>
+                </column>
+              </row>
+              <row>
+                <column md="12" class="md-form mb-4 active-green-vue">
+                  <label class="padding-left-10" for="form17"><strong>Descripcion</strong></label>
+                  <textarea type="text" id="form17" class="md-textarea form-control margin-top-12" rows="2" v-model="UserBonsai.descripcion"></textarea>
+                </column>
+              </row>
+              <button class="btn btn-default pull-right" type="submit">Guardar</button>
+            </form>
+          </card-body>
+        </column>
+      </row>
+    </div>
   </div>
 </template>
 
 <script>
   import axios from 'axios';
+  import { Container, Column, Row, Fa, Navbar, NavbarItem, NavbarNav, NavbarCollapse, Btn, EdgeHeader, CardBody } from 'mdbvue';
   export default {
     name: "UserBonsaiAdd",
+    components: {
+      Container,
+      Column,
+      Row,
+      Fa,
+      Navbar,
+      NavbarItem,
+      NavbarNav,
+      NavbarCollapse,
+      Btn,
+      EdgeHeader,
+      CardBody
+    },
     mounted(){
 
     },
@@ -75,5 +125,16 @@
 </script>
 
 <style scoped>
+  .margin-top-12 {
+    margin-top: 12px;
+  }
 
+  .active-green-vue textarea.md-textarea, input.md-input{
+    border-bottom: 1px solid #00897B;
+    box-shadow: 0 1px 0 0 #00897B;
+  }
+
+  .padding-left-10 {
+    padding-left: 10px;
+  }
 </style>

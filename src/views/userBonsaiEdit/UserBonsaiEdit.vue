@@ -17,7 +17,7 @@
                         <p class="pull-right">Tipo</p>
                       </column>
                       <column md="8" class="md-form">
-                        <select class="custom-select" v-model="UserBonsai.idbonsai.idbonsai">
+                        <select class="custom-select"  v-model="UserBonsai.idBonsai">
                           <option value="1">Ficus</option>
                           <option value="2">Manzano</option>
                           <option value="3">Olmo</option>
@@ -49,7 +49,7 @@
                         <p class="pull-right">Adquisicion</p>
                       </column>
                       <column md="8" class="md-form">
-                        <input type="date" id="materialFormRegisterDateEx" class="form-control md-input" v-model="UserBonsai.fechaadquisicion.timestamp">
+                        <input type="date" id="materialFormRegisterDateEx" class="form-control md-input" v-model="UserBonsai.fechaadquisicion">
                       </column>
                     </row>
                   </column>
@@ -100,22 +100,21 @@
       return {
         id: null,
         UserBonsai: {
-          idbonsai: null,
+          idBonsai:null,
           alias: '',
           edad: null,
-          fechaadquisicion: '',
+          fechaAdquisicion: '',
           descripcion: '',
         }
       };
     },
     methods: {
       guardarUserBonsai(){
-        let router = this.$router;
         let id = this.id;
-        let token = localStorage.getItem("token");
+        let router = this.$router;
         let json = JSON.stringify(this.UserBonsai);
+        let token = localStorage.getItem("token");
         let params = 'json='+json+'&authorization='+token;
-        //let params = '&json='+JSON.stringify(this.UserBonsai);
 
         axios.post('http://localhost:8000/userBonsai/edit/'+id, params)
           .then((respuesta) => {
