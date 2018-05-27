@@ -1,5 +1,13 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+// VIEWS
+import Login from '../views/login/Login.vue';
+import Registro from '../views/registro/Registro.vue';
+import UserBonsai from '../views/userBonsai/UserBonsai.vue';
+import UserBonsaiDetail from '../views/userBonsaiDetail/UserBonsaiDetail.vue';
+import UserBonsaiAdd from '../views/userBonsaiAdd/UserBonsaiAdd.vue';
+import UserBonsaiEdit from '../views/userBonsaiEdit/UserBonsaiEdit.vue';
+import LogCuidados from '../views/logCuidados/LogCuidados.vue';
 
 // PAGES
 import CSSPage from '../docs/CSSPage';
@@ -7,7 +15,7 @@ import ComponentsPage from '../docs/ComponentsPage';
 import AdvancedPage from '../docs/AdvancedPage';
 
 // FREE
-import HomePage from '../docs/HomePage';
+// import HomePage from '../docs/HomePage';
 import GridPage from '../docs/GridPage';
 import BadgePage from '../docs/BadgePage';
 import CardPage from '../docs/CardPage';
@@ -37,14 +45,76 @@ import HoverPage from '../docs/HoverPage';
 import VideoCarouselPage from '../docs/VideoCarouselPage';
 import ModalPage from '../docs/ModalPage';
 
-Vue.use(Router);
+// function checkLogedIn(to, from, next) {
+//   const isAuthenticated = localStorage.getItem("token");
+//   let route;
+//
+//   if (!isAuthenticated) {
+//     if (to.name === 'login' || to.name === 'registro' || to.name === 'userBonsai-list') {
+//       route = {name: 'userBonsai-list'};
+//       console.log('if');
+//     }
+//   }
+//   else if  (to.name !== 'login' || to.name !== 'registro') {
+//     console.log('else if');
+//     route = {name: 'login'};
+//   }
+//
+//   return next(route);
+// }
+// function checkLogedIn (to,from, next){
+//   const isAuthenticated = localStorage.getItem("token");
+//   let route;
+//   if (!isAuthenticated) {
+//     console.log('no token');
+//     route = {name: 'login'};
+//   }
+//   else {
+//     console.log('si token');
+//     route = {name: 'userBonsai-list'};
+//   }
+//   return next(route)
+// }
 
+
+Vue.use(Router);
+// const router =  new Router({
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: HomePage
+      name: 'userBonsai-list',
+      component: UserBonsai
+    },
+    {
+      path: '/detail/:id',
+      name: 'userBonsai-detail',
+      component: UserBonsaiDetail
+    },
+    {
+      path: '/edit/:id',
+      name: 'userBonsai-edit',
+      component: UserBonsaiEdit
+    },
+    {
+      path: '/add/',
+      name: 'userBonsai-add',
+      component: UserBonsaiAdd
+    },
+    {
+      path: '/cuidados/:id',
+      name: 'logCuidados',
+      component: LogCuidados
+    },
+    {
+      path: '/login/',
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/registro/',
+      name: 'registro',
+      component: Registro
     },
 
     // PAGES
@@ -178,3 +248,6 @@ export default new Router({
     }
   ]
 });
+
+//   router.beforeEach(checkLogedIn);
+// export default router;

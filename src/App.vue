@@ -1,21 +1,19 @@
 <template>
   <div id="app" class="flyout">
-    <navbar dark position="top" class="default-color" name="MDB Vue" href="#/" scrolling>
+    <navbar v-if="UserToken" dark position="top" class="default-color" name="My Bonsai" href="#/" scrolling>
       <navbar-collapse>
         <navbar-nav right>
-          <navbar-item href="#/" waves-fixed>Home</navbar-item>
-          <navbar-item href="#/css" waves-fixed>CSS</navbar-item>
-          <navbar-item href="#/components" waves-fixed>Components</navbar-item>
-          <navbar-item href="#/advanced" waves-fixed>Advanced</navbar-item>
+          <navbar-item href="https://www.youtube.com/results?search_query=cuidados+bonsai" waves-fixed>Videos</navbar-item>
+          <navbar-item  waves-fixed><span @click="cerrarSesion()">Cerrar sesion</span></navbar-item>
         </navbar-nav>
       </navbar-collapse>
     </navbar>
     <main :style="{marginTop: '60px'}">
       <router-view></router-view>
     </main>
-    <Ftr color="default-color">
+    <Ftr class="margin-top-15" color="default-color">
       <p class="footer-copyright mb-0 py-3 text-center">
-        &copy; {{new Date().getFullYear()}} Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
+        {{new Date().getFullYear()}} Sebastian Diez Buades
       </p>
     </Ftr>
   </div>
@@ -38,6 +36,18 @@ export default {
     NavbarCollapse,
     Ftr,
     EdgHd,
+  },
+  data () {
+    return {
+      UserToken: localStorage.getItem("token"),
+    };
+  },
+  methods: {
+    cerrarSesion(){
+      let router = this.$router;
+      router.push('/login');
+      localStorage.clear();
+    }
   }
 };
 
