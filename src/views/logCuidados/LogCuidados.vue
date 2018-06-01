@@ -5,74 +5,103 @@
       <row>
         <column md="10" class="mx-auto float-none white z-depth-1 py-2 px-2">
           <card-body>
-            <h2 class="h2-responsive"><strong>Nuevo Cuidado</strong></h2>
               <row>
                 <column md="6">
-                  <form v-on:submit.prevent="guardarUserBonsai">
-                  <row>
-                    <column md="4" class="md-form">
-                      <p class="pull-right">Tipo</p>
-                    </column>
-                    <column md="8" class="md-form">
-                      <select class="custom-select"  v-model="logCuidados.cuidado">
-                        <option value="Regar">Regar</option>
-                        <option value="Abonar">Abonar</option>
-                        <option value="Pulverizar">Pulverizar</option>
-                        <option value="Transplantar">Transplantar</option>
-                      </select>
+                  <row class="margin-right-15">
+                    <h2 class="h2-responsive"><strong>Nuevo Cuidado</strong></h2>
+                    <column md="12">
+                      <form v-on:submit.prevent="guardarLogCuidado">
+                        <row>
+                          <column md="4" class="md-form">
+                            <p class="pull-right">Tipo</p>
+                          </column>
+                          <column md="8" class="md-form">
+                            <select class="custom-select"  v-model="logCuidados.cuidado">
+                              <option value="Regar">Regar</option>
+                              <option value="Abonar">Abonar</option>
+                              <option value="Pulverizar">Pulverizar</option>
+                              <option value="Transplantar">Transplantar</option>
+                            </select>
+                          </column>
+                        </row>
+                        <row>
+                          <column md="4" class="md-form">
+                            <p class="pull-right">Fecha</p>
+                          </column>
+                          <column md="8" class="md-form">
+                            <input type="date" id="materialFormRegisterDateEx" class="form-control md-input" v-model="logCuidados.createdAt">
+                          </column>
+                        </row>
+                        <button class="btn btn-default margin-top-12 pull-right" type="submit">Editar</button>
+                      </form>
                     </column>
                   </row>
-                  <row>
-                    <column md="4" class="md-form">
-                      <p class="pull-right">Fecha</p>
-                    </column>
-                    <column md="8" class="md-form">
-                      <input type="date" id="materialFormRegisterDateEx" class="form-control md-input" v-model="logCuidados.createdAt">
-                    </column>
-                  </row>
-                  <button class="btn btn-default margin-top-12 pull-right" type="submit">Editar</button>
-                  </form>
+                  <!--<row>-->
+                    <!--<h2 class="h2-responsive"><strong>Proximos Cuidados</strong></h2>-->
+                    <!--<column md="12">-->
+                      <!--<row>-->
+                        <!--<column md="4" class="md-form">-->
+                          <!--<p class="pull-right">Regar</p>-->
+                        <!--</column>-->
+                        <!--<column md="8" class="md-form">-->
+                          <!--<p class="">21-11-2018</p>-->
+                        <!--</column>-->
+                      <!--</row>-->
+                      <!--<row>-->
+                        <!--<column md="4" class="md-form">-->
+                          <!--<p class="pull-right">Pulverizar</p>-->
+                        <!--</column>-->
+                        <!--<column md="8" class="md-form">-->
+                          <!--<p class="">25-11-2018</p>-->
+                        <!--</column>-->
+                      <!--</row>-->
+                      <!--<row>-->
+                        <!--<column md="4" class="md-form">-->
+                          <!--<p class="pull-right">Abonar</p>-->
+                        <!--</column>-->
+                        <!--<column md="8" class="md-form">-->
+                          <!--<p class="">21-12-2018</p>-->
+                        <!--</column>-->
+                      <!--</row>-->
+                      <!--<row>-->
+                        <!--<column md="4" class="md-form">-->
+                          <!--<p class="pull-right">Transplantar</p>-->
+                        <!--</column>-->
+                        <!--<column md="8" class="md-form">-->
+                          <!--<p class="">21-01-2019</p>-->
+                        <!--</column>-->
+                      <!--</row>-->
+                    <!--</column>-->
+                  <!--</row>-->
                 </column>
                 <column md="6" class="border-left-3">
-                  <table class="table table-hover w-auto">
+                  <h2 class="h2-responsive"><strong>Historial de Cuidados</strong></h2>
+                  <table v-if="getCuidados != null" class="table table-hover w-auto margin-top-30 margin-left-15" width="100%">
                     <thead class="default-color lighten-4">
                     <tr>
-                      <th></th>
                       <th>Fecha</th>
                       <th>Cuidado</th>
-                      <th>Oopciones</th>
+                      <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Regar</td>
-                      <td>21-03-2018</td>
+                    <tr v-for="cuidado in getCuidados">
+                      <td>{{ cuidado.createdat.timestamp }}</td>
+                      <td>{{ cuidado.cuidado }}</td>
                       <td>
-                        <button type="button" class="btn btn-warning btn-circle"><i class="fa fa-pencil fa-lg" aria-hidden="true"/></button>
-                        <button type="button" class="btn btn-danger btn-circle"><i class="fa fa-trash-o fa-lg" aria-hidden="true"/></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Abonar</td>
-                      <td>11-03-2018</td>
-                      <td>
-                        <button type="button" class="btn btn-warning btn-circle"><i class="fa fa-pencil fa-lg" aria-hidden="true"/></button>
-                        <button type="button" class="btn btn-danger btn-circle"><i class="fa fa-trash-o fa-lg" aria-hidden="true"/></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Pulverizar</td>
-                      <td>01-04-2018</td>
-                      <td>
-                        <button type="button" class="btn btn-warning btn-circle"><i class="fa fa-pencil fa-lg" aria-hidden="true"/></button>
-                        <button type="button" class="btn btn-danger btn-circle"><i class="fa fa-trash-o fa-lg" aria-hidden="true"/></button>
+                        <span v-if="showRemove != cuidado.idlogcuidados">
+                          <button @click="removeLogCuidados(cuidado.idlogcuidados)" type="button" class="btn btn-danger btn-circle"><i class="fa fa-trash-o fa-lg" aria-hidden="true"/></button>
+                        </span>
+                        <span v-else>
+                            <p>¿Estas seguro de querer borrar este bonsai?</p>
+                            <button class="btn btn-warning" @click="cancelRemove()">No</button>
+                            <button class="btn btn-danger" @click="confirmRemove(cuidado.idlogcuidados)">Si</button>
+                        </span>
                       </td>
                     </tr>
                     </tbody>
                   </table>
+                  <span v-else>No hay ningun cuidado registrado</span>
                 </column>
               </row>
           </card-body>
@@ -101,17 +130,13 @@
       CardBody
     },
     mounted(){
-      this.id = this.$route.params.id;
-      let token = localStorage.getItem("token");
-      let params = 'authorization='+token;
-      axios.post('http://localhost:8000/logCuidados/' + this.id, params)
-        .then((respuesta) => {
-          this.UserBonsai = respuesta.data.data;
-        });
+      this.getLogCuidados();
+      console.log(this.getLogCuidados());
     },
     data(){
       return {
         id: null,
+        getCuidados: null,
         logCuidados: {
           cuidado: '',
           createdAt: ''
@@ -120,7 +145,17 @@
       };
     },
     methods: {
-      guardarUserBonsai(){
+      getLogCuidados(){
+        this.id = this.$route.params.id;
+        let token = localStorage.getItem("token");
+        let params = 'authorization='+token;
+        axios.post('http://localhost:8000/logCuidados/' + this.id, params)
+          .then((respuesta) => {
+            this.getCuidados = respuesta.data.data;
+          });
+      },
+
+      guardarLogCuidado(){
         let id = this.id;
         let router = this.$router;
         let json = JSON.stringify(this.logCuidados);
@@ -160,6 +195,18 @@
 <style scoped>
   .margin-top-12 {
     margin-top: 12px;
+  }
+
+  .margin-top-30 {
+    margin-top: 30px;
+  }
+
+  .margin-right-15 {
+    margin-right: 15px;
+  }
+
+  .margin-left-15 {
+    margin-left: 15px;
   }
 
   .active-green-vue textarea.md-textarea, input.md-input{
