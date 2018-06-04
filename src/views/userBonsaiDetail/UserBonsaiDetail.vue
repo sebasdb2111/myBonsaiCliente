@@ -32,7 +32,7 @@
                       <p class="pull-right"><strong>Adquisicion</strong></p>
                     </column>
                     <column md="8" class="md-form">
-                      <p v-text="userBonsaiDetail.fechaadquisicion.timestamp"></p>
+                      <p v-text="userBonsaiDetail.fechaadquisicion"></p>
                     </column>
                   </row>
                 </column>
@@ -52,6 +52,7 @@
 
 <script>
   import axios from 'axios';
+  import moment from 'moment';
   import { Container, Column, Row, Fa, Navbar, NavbarItem, NavbarNav, NavbarCollapse, Btn, EdgeHeader, CardBody } from 'mdbvue';
   export default {
     name: "UserBonsaiDetail",
@@ -74,7 +75,10 @@
       let params = 'authorization='+token;
       axios.post('http://localhost:8000/userBonsai/detail/' + this.id, params)
         .then((respuesta) => {
-          this.userBonsaiDetail = respuesta.data.data;
+            this.userBonsaiDetail.alias = respuesta.data.data.alias;
+            this.userBonsaiDetail.edad = respuesta.data.data.edad;
+            this.userBonsaiDetail.descripcion = respuesta.data.data.descripcion;
+            this.userBonsaiDetail.fechaadquisicion = moment(respuesta.data.data.fechaadquisicion.timestamp).format("DD-MM-YYYY");
         })
         .catch((error)=>{
           // console.log(error);
@@ -83,7 +87,14 @@
     data(){
       return {
         id: null,
-        userBonsaiDetail: null
+        userBonsaiDetail: {
+            alias: null,
+            edad: null,
+            fechaadquisicion: null,
+            descripcion :null
+
+
+        }
       }
 
     }
