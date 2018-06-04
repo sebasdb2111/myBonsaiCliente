@@ -86,7 +86,7 @@
                     </thead>
                     <tbody>
                     <tr v-for="cuidado in getCuidados">
-                      <td>{{ cuidado.createdat.timestamp }}</td>
+                      <td>{{ fechaCuidado }}</td>
                       <td>{{ cuidado.cuidado }}</td>
                       <td>
                         <span v-if="showRemove != cuidado.idlogcuidados">
@@ -113,6 +113,7 @@
 
 <script>
   import axios from 'axios';
+  import moment from 'moment';
   import { Container, Column, Row, Fa, Navbar, NavbarItem, NavbarNav, NavbarCollapse, Btn, EdgeHeader, CardBody } from 'mdbvue';
   export default {
     name: "UserBonsaiEdit",
@@ -144,6 +145,11 @@
         showRemove: null
       };
     },
+    computed: {
+        fechaCuidado: function () {
+            return moment(this.getCuidados.createdat).format("DD-MM-YYYY")
+        }
+    },
     methods: {
       getLogCuidados(){
         this.id = this.$route.params.id;
@@ -167,7 +173,6 @@
             if (respuesta.data.status == 'success'){
               router.push('/logCuidados/'+id);
             }
-
           })
           .catch((error)=>{
             // console.log(error);
