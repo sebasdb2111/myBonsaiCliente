@@ -6,7 +6,8 @@
         <div class="col-lg-4 col-md-6 ficha-bonsai"  id="userBonsai-list" v-if="userBonsai != null" v-for="bonsai in userBonsai">
           <div class="card card-cascade narrower">
             <div class="view overlay">
-              <img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(147).jpg" class="img-fluid" alt="narrower">
+              <img src="../../assets/manzano.jpg" class="img-fluid" alt="narrower">
+              <!--'../../assets/'+bonsai.idbonsai.tipo+'.jpg'-->
               <a>
                 <div class="mask rgba-white-slight"></div>
               </a>
