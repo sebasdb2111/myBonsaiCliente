@@ -9,7 +9,7 @@
             <form v-on:submit.prevent="guardarUserBonsai">
               <row>
                   <column md="6">
-                    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(54).jpg" class="img-fluid z-depth-1" alt="1" width="450px" height="450px">
+                    <img :src="UserBonsai.imgbonsai" class="img-fluid z-depth-1" alt="1" width="450px" height="450px">
                   </column>
                   <column md="6">
                     <row>
@@ -94,6 +94,7 @@
       axios.post('http://localhost:8000/userBonsai/detail/' + this.id, params)
         .then((respuesta) => {
           this.UserBonsai = respuesta.data.data;
+          this.UserBonsai.imgbonsai = respuesta.data.data.imgbonsai;
         });
     },
     data(){
@@ -105,6 +106,7 @@
           edad: null,
           fechaAdquisicion: '',
           descripcion: '',
+          imgbonsai: null
         }
       };
     },
