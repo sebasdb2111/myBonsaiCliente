@@ -8,8 +8,8 @@
             <h2 class="h2-responsive"><strong>Añadir Bonsai</strong></h2>
             <form  v-on:submit.prevent="guardarUserBonsai">
               <row>
-                <column md="6">
-                  <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(54).jpg" class="img-fluid z-depth-1" alt="1" width="450px" height="450px">
+                <column md="6 margin-top-12 text-center">
+                  <img src="../../assets/icon-bonsai.jpg" class="tamanyo-img-300 img-fluid z-depth-1" alt="1" width="450px" height="450px">
                 </column>
                 <column md="6">
                   <row>

@@ -7,8 +7,8 @@
           <card-body>
             <h2 class="h2-responsive"><strong>Detalle Bonsai</strong></h2>
               <row>
-                <column md="6">
-                  <img :src="userBonsaiDetail.imgbonsai" class="img-fluid z-depth-1" alt="1" width="450px" height="450px">
+                <column md="6 margin-top-12 text-center">
+                  <img :src="userBonsaiDetail.imgbonsai" class="tamanyo-img-300 img-fluid z-depth-1" alt="1">
                 </column>
                 <column md="6">
                   <row>

@@ -8,8 +8,8 @@
             <h2 class="h2-responsive"><strong>Editar Bonsai</strong></h2>
             <form v-on:submit.prevent="guardarUserBonsai">
               <row>
-                  <column md="6">
-                    <img :src="UserBonsai.imgbonsai" class="img-fluid z-depth-1" alt="1" width="450px" height="450px">
+                  <column md="6 margin-top-12 text-center">
+                    <img :src="UserBonsai.imgbonsai" class="tamanyo-img-300 img-fluid z-depth-1" alt="1" width="450px" height="450px">
                   </column>
                   <column md="6">
                     <row>
@@ -134,10 +134,6 @@
 </script>
 
 <style scoped>
-  .margin-top-12 {
-    margin-top: 12px;
-  }
-
   .active-green-vue textarea.md-textarea, input.md-input{
     border-bottom: 1px solid #00897B;
     box-shadow: 0 1px 0 0 #00897B;
