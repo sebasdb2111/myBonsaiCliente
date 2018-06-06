@@ -45,41 +45,25 @@ import HoverPage from '../docs/HoverPage';
 import VideoCarouselPage from '../docs/VideoCarouselPage';
 import ModalPage from '../docs/ModalPage';
 
-// function checkLogedIn(to, from, next) {
-//   const isAuthenticated = localStorage.getItem("token");
-//   let route;
-//
-//   if (!isAuthenticated) {
-//     if (to.name === 'login' || to.name === 'registro' || to.name === 'userBonsai-list') {
-//       route = {name: 'userBonsai-list'};
-//       console.log('if');
-//     }
-//   }
-//   else if  (to.name !== 'login' || to.name !== 'registro') {
-//     console.log('else if');
-//     route = {name: 'login'};
-//   }
-//
-//   return next(route);
-// }
-// function checkLogedIn (to,from, next){
-//   const isAuthenticated = localStorage.getItem("token");
-//   let route;
-//   if (!isAuthenticated) {
-//     console.log('no token');
-//     route = {name: 'login'};
-//   }
-//   else {
-//     console.log('si token');
-//     route = {name: 'userBonsai-list'};
-//   }
-//   return next(route)
-// }
+function checkLogedIn(to, from, next) {
+  const isAuthenticated = localStorage.getItem("token");
 
+  let route;
+
+  if (isAuthenticated) {
+    if (to.name === 'login') {
+      route = { name: 'userBonsai-list' };
+    }
+  } else if (to.name !== 'login' || to.name !== 'registro') {
+    route = { name: 'login' };
+  }
+
+  return next(route);
+}
 
 Vue.use(Router);
-// const router =  new Router({
-export default new Router({
+
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -249,5 +233,5 @@ export default new Router({
   ]
 });
 
-//   router.beforeEach(checkLogedIn);
-// export default router;
+router.beforeEach(checkLogedIn);
+export default router;
