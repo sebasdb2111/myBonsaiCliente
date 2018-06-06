@@ -8,7 +8,7 @@
             <h2 class="h2-responsive"><strong>Detalle Bonsai</strong></h2>
               <row>
                 <column md="6">
-                  <img :src="'../../assets/'+userBonsaiDetail.idbonsai.tipo+'.jpg'" class="img-fluid z-depth-1" alt="1" width="450px" height="450px">
+                  <img :src="userBonsaiDetail.imgbonsai" class="img-fluid z-depth-1" alt="1" width="450px" height="450px">
                 </column>
                 <column md="6">
                   <row>
@@ -78,9 +78,8 @@
             this.userBonsaiDetail.alias = respuesta.data.data.alias;
             this.userBonsaiDetail.edad = respuesta.data.data.edad;
             this.userBonsaiDetail.descripcion = respuesta.data.data.descripcion;
-            this.userBonsaiDetail.tipo = respuesta.data.data.idbonsai.tipo;
+            this.userBonsaiDetail.imgbonsai = respuesta.data.data.imgbonsai;
             this.userBonsaiDetail.fechaadquisicion = moment(respuesta.data.data.fechaadquisicion.timestamp).format("DD-MM-YYYY");
-            console.log(respuesta.data.data.idbonsai.tipo);
         })
         .catch((error)=>{
           // console.log(error);
@@ -90,13 +89,12 @@
       return {
         id: null,
         userBonsaiDetail: {
-            tipo: null,
-            alias: null,
-            edad: null,
-            fechaadquisicion: null,
-            descripcion :null
-
-
+          tipo: null,
+          alias: null,
+          edad: null,
+          fechaadquisicion: null,
+          descripcion :null,
+          imgbonsai: null
         }
       }
 

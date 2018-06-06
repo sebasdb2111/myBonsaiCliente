@@ -6,8 +6,7 @@
         <div class="col-lg-4 col-md-6 ficha-bonsai"  id="userBonsai-list" v-if="userBonsai != null" v-for="bonsai in userBonsai">
           <div class="card card-cascade narrower">
             <div class="view overlay">
-              <img src="../../assets/manzano.jpg" class="img-fluid" alt="narrower">
-              <!--'../../assets/'+bonsai.idbonsai.tipo+'.jpg'-->
+              <img :src="bonsai.imgbonsai" class="img-fluid" alt="narrower">
               <a>
                 <div class="mask rgba-white-slight"></div>
               </a>
@@ -15,12 +14,12 @@
             <div class="card-body card-bonsai">
               <h5 class="text-default"><i class="r fa fa-tree"></i> {{bonsai.idbonsai.tipo}}</h5>
               <h4 class="card-title"><strong>{{bonsai.alias}}</strong></h4>
-              <div class="card card-body">
-                <h4 class="card-title"><strong>Proximo Cuidado</strong></h4>
-                <span class="card-text"><strong>Cuidado:</strong> Regar</span>
-                <span class="card-text"><strong>Fecha:</strong> 21-11-2018</span>
-                <span class="card-text"></span><span></span>
-              </div>
+              <!--<div class="card card-body">-->
+                <!--<h4 class="card-title"><strong>Proximo Cuidado</strong></h4>-->
+                <!--<span class="card-text"><strong>Cuidado:</strong> Regar</span>-->
+                <!--<span class="card-text"><strong>Fecha:</strong> 21-11-2018</span>-->
+                <!--<span class="card-text"></span><span></span>-->
+              <!--</div>-->
               <br>
               <row>
                 <column md="6">
@@ -81,7 +80,6 @@
     },
     data() {
       return {
-        texto: 'Componente de userBonsai',
         userBonsai: null,
         showRemove: null
       }
@@ -97,7 +95,6 @@
           .catch((error)=>{
             // console.log(error);
           });
-
       },
       removeUserBonsai(id) {
         this.showRemove = id;
