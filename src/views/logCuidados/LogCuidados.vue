@@ -76,7 +76,7 @@
                 </column>
                 <column md="6" class="border-left-3">
                   <h2 class="h2-responsive"><strong>Historial de Cuidados</strong></h2>
-                  <table v-if="getCuidados != null" class="table table-hover w-auto margin-top-30 margin-left-15" width="100%">
+                  <table v-if="getCuidados != null" class="table table-hover width-100 margin-top-30 margin-left-15">
                     <thead class="default-color lighten-4">
                     <tr>
                       <th>Fecha</th>
@@ -171,7 +171,7 @@
         axios.post('http://localhost:8000/logCuidados/new/'+id, params)
           .then((respuesta) => {
             if (respuesta.data.status == 'success'){
-              router.push('/logCuidados/'+id);
+             this.getLogCuidados();
             }
           })
           .catch((error)=>{
@@ -235,8 +235,8 @@
     line-height: 1.33;
     border-radius: 25px;
   }
-  .w-auto {
-    width: auto;
+  .width-100 {
+    width: 100%;
   }
 
 </style>

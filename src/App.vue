@@ -61,11 +61,13 @@ export default {
     justify-content: space-between;
   }
 
-  .tamanyo-img {
-    max-height: 200px;
-    min-height: 200px;
-    max-width: 396px;
-    min-width: 396px;
+  .margin-top-12 {
+    margin-top: 12px;
+  }
+
+  .tamanyo-img-300{
+    width: 300px;
+    height: 300px;
   }
 
 </style>

@@ -185,9 +185,7 @@
   }
 
   .tamanyo-img-list {
-    min-height: 362px;
-    max-height: 362px;
-    min-width: 544px;
-    max-width: 544px;
+    height: 275px;
+    width: 544px;
   }
 </style>
