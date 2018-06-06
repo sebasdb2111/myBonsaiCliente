@@ -6,7 +6,7 @@
         <div class="col-lg-4 col-md-6 ficha-bonsai"  id="userBonsai-list" v-if="userBonsai != null" v-for="bonsai in userBonsai">
           <div class="card card-cascade narrower">
             <div class="view overlay">
-              <img :src="bonsai.imgbonsai" class="img-fluid" alt="narrower">
+              <img :src="bonsai.imgbonsai" class="img-fluid tamanyo-img-list" alt="narrower">
               <a>
                 <div class="mask rgba-white-slight"></div>
               </a>
@@ -182,5 +182,12 @@
     font-size: 18px;
     line-height: 1.33;
     border-radius: 25px;
+  }
+
+  .tamanyo-img-list {
+    min-height: 362px;
+    max-height: 362px;
+    min-width: 544px;
+    max-width: 544px;
   }
 </style>

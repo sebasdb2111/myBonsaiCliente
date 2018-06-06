@@ -54,11 +54,18 @@ export default {
 </script>
 
 <style>
-.flyout {
-	display:flex;
-	flex-direction: column;
-	min-height:100vh;
-	justify-content: space-between;
-}
+  .flyout {
+    display:flex;
+    flex-direction: column;
+    min-height:100vh;
+    justify-content: space-between;
+  }
+
+  .tamanyo-img {
+    max-height: 200px;
+    min-height: 200px;
+    max-width: 396px;
+    min-width: 396px;
+  }
 
 </style>

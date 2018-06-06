@@ -8,7 +8,7 @@
             <h2 class="h2-responsive"><strong>Detalle Bonsai</strong></h2>
               <row>
                 <column md="6">
-                  <img :src="userBonsaiDetail.imgbonsai" class="img-fluid z-depth-1" alt="1" width="450px" height="450px">
+                  <img :src="userBonsaiDetail.imgbonsai" class="tamanyo-img img-fluid z-depth-1" alt="1">
                 </column>
                 <column md="6">
                   <row>

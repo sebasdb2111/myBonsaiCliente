@@ -9,7 +9,7 @@
             <form v-on:submit.prevent="guardarUserBonsai">
               <row>
                   <column md="6">
-                    <img :src="UserBonsai.imgbonsai" class="img-fluid z-depth-1" alt="1" width="450px" height="450px">
+                    <img :src="UserBonsai.imgbonsai" class="tamanyo-img img-fluid z-depth-1" alt="1" width="450px" height="450px">
                   </column>
                   <column md="6">
                     <row>
