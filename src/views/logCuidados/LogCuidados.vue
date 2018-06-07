@@ -86,7 +86,7 @@
                     </thead>
                     <tbody>
                     <tr v-for="cuidado in getCuidados">
-                      <td>{{ fechaCuidado }}</td>
+                      <td>{{ cuidado.createdat.timestamp|fechaCuidado }}</td>
                       <td>{{ cuidado.cuidado }}</td>
                       <td>
                         <span v-if="showRemove != cuidado.idlogcuidados">
@@ -137,6 +137,7 @@
     data(){
       return {
         id: null,
+        cuidados: null,
         getCuidados: null,
         logCuidados: {
           cuidado: '',
@@ -145,10 +146,10 @@
         showRemove: null
       };
     },
-    computed: {
-        fechaCuidado: function () {
-            return moment(this.getCuidados.createdat).format("DD-MM-YYYY")
-        }
+    filters: {
+      fechaCuidado(createdat) {
+          return moment(createdat).format("DD-MM-YYYY")
+      }
     },
     methods: {
       getLogCuidados(){
