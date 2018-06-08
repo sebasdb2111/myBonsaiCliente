@@ -132,7 +132,6 @@
     },
     mounted(){
       this.getLogCuidados();
-      console.log(this.getLogCuidados());
     },
     data(){
       return {
@@ -148,7 +147,22 @@
     },
     filters: {
       fechaCuidado(createdat) {
-          return moment(createdat).format("DD-MM-YYYY")
+        let date = new Date();
+        // let day = false;
+        // if (date.getMonth(createdat)+1 <= 9)
+        //   day = '0'+date.getMonth(createdat)+1;
+        // else
+        let day = date.getDay(createdat);
+        // let month = false;
+        // if (date.getMonth(createdat)+1 <= 9)
+        //   month = '0'+date.getMonth(createdat)+1;
+        // else
+        let month = date.getMonth(createdat)+1;
+        let year = date.getFullYear(createdat);
+        let fecha = day+'-'+month+'-'+year;
+        console.log(fecha);
+        return fecha;
+        // return moment(createdat).format("DD-MM-YYYY")
       }
     },
     methods: {
