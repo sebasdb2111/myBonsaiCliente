@@ -55,12 +55,14 @@ function checkLogedIn(to, from, next) {
       route = { name: 'userBonsai-list' };
     }
   } else if (to.name !== 'login') {
-      console.log("debe entrar");
     if (to.name === 'registro') {
-      console.log("debe entrar 2");
+      console.log("entra en registro");
       route = { name: 'registro' };
     }
-    route = { name: 'login' };
+    else {
+      console.log("entra en login");
+      route = { name: 'login' };
+    }
   }
   return next(route);
 }
