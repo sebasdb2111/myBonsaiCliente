@@ -1,10 +1,10 @@
 <template>
   <div id="app" class="flyout">
-    <navbar v-if="UserToken" dark position="top" class="default-color" name="My Bonsai" href="#/" scrolling>
+    <navbar dark position="top" class="default-color" name="My Bonsai" href="#/" scrolling>
       <navbar-collapse>
         <navbar-nav right>
-          <navbar-item href="https://www.youtube.com/results?search_query=cuidados+bonsai" waves-fixed>Videos</navbar-item>
-          <navbar-item  waves-fixed><span @click="cerrarSesion()">Cerrar sesion</span></navbar-item>
+          <!--<navbar-item href="https://www.youtube.com/results?search_query=cuidados+bonsai" waves-fixed>Videos</navbar-item>-->
+          <navbar-item v-if="UserToken" waves-fixed><span @click="cerrarSesion()">Cerrar sesion</span></navbar-item>
         </navbar-nav>
       </navbar-collapse>
     </navbar>
