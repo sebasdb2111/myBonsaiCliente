@@ -86,7 +86,7 @@
                     </thead>
                     <tbody>
                     <tr v-for="cuidado in getCuidados">
-                      <td>{{ fechaCuidado }}</td>
+                      <td>{{ cuidado.createdat.timestamp|fechaCuidado }}</td>
                       <td>{{ cuidado.cuidado }}</td>
                       <td>
                         <span v-if="showRemove != cuidado.idlogcuidados">
@@ -132,11 +132,11 @@
     },
     mounted(){
       this.getLogCuidados();
-      console.log(this.getLogCuidados());
     },
     data(){
       return {
         id: null,
+        cuidados: null,
         getCuidados: null,
         logCuidados: {
           cuidado: '',
@@ -145,10 +145,25 @@
         showRemove: null
       };
     },
-    computed: {
-        fechaCuidado: function () {
-            return moment(this.getCuidados.createdat).format("DD-MM-YYYY")
-        }
+    filters: {
+      fechaCuidado(createdat) {
+        let date = new Date();
+        // let day = false;
+        // if (date.getMonth(createdat)+1 <= 9)
+        //   day = '0'+date.getMonth(createdat)+1;
+        // else
+        let day = date.getDay(createdat);
+        // let month = false;
+        // if (date.getMonth(createdat)+1 <= 9)
+        //   month = '0'+date.getMonth(createdat)+1;
+        // else
+        let month = date.getMonth(createdat)+1;
+        let year = date.getFullYear(createdat);
+        let fecha = day+'-'+month+'-'+year;
+        console.log(fecha);
+        return fecha;
+        // return moment(createdat).format("DD-MM-YYYY")
+      }
     },
     methods: {
       getLogCuidados(){
